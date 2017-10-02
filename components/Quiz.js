@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { buttonStyles } from '../styles';
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications';
 
 class Quiz extends Component {
   static navigationOptions = {
@@ -26,6 +27,8 @@ class Quiz extends Component {
         showScore: true,
         score,
       });
+      clearLocalNotification()
+        .then(setLocalNotification);
       return;
     }
 
@@ -86,7 +89,7 @@ class Quiz extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={[Platform.OS === 'ios' ? buttonStyles.iosBtn : buttonStyles.AndroidBtn, {backgroundColor: '#ff6347'}]}
-            onPress={() => this.advance(-1)}
+            onPress={() => this.advance(0)}
           >
             <Text style={{color: '#fff'}}>Incorrect</Text>
           </TouchableOpacity>

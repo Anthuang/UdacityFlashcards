@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers';
+import { setLocalNotification } from './utils/notifications';
 import DeckList from './components/DeckList';
 import DeckDetail from './components/DeckDetail';
 import NewDeck from './components/NewDeck';
@@ -59,6 +60,10 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+  
   render() {
     return (
       <Provider store={createStore(reducer)}>

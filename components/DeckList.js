@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { getDecks } from '../utils/api';
 import Deck from './Deck';
@@ -17,16 +17,18 @@ class DeckList extends Component {
     const { decks, navigation } = this.props;
     
     return (
-      <ScrollView>
-        {decks.map((deck, idx) => (
-          <TouchableOpacity key={idx} onPress={() => navigation.navigate(
+      <FlatList
+        data={decks}
+        renderItem={({item}) => (
+          <TouchableOpacity onPress={() => navigation.navigate(
             'DeckDetail',
-            {deckName: deck.title}
+            {deckName: item.title}
           )}>
-            <Deck deck={deck}/>
+            <Deck deck={item}/>
           </TouchableOpacity>
-        ))}
-      </ScrollView>
+        )}
+        keyExtractor={(item, index) => index}
+      />
     )
   }
 }
