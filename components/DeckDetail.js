@@ -34,6 +34,7 @@ class DeckDetail extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={[Platform.OS === 'ios' ? buttonStyles.iosBtn : buttonStyles.AndroidBtn, {backgroundColor: '#000'}]}
+            onPress={() => this.props.navigation.navigate('Quiz', {deckName: deck.title})}
           >
             <Text style={{color: '#fff'}}>Start Quiz</Text>
           </TouchableOpacity>

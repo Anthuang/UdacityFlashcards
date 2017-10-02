@@ -10,6 +10,7 @@ import DeckList from './components/DeckList';
 import DeckDetail from './components/DeckDetail';
 import NewDeck from './components/NewDeck';
 import NewCard from './components/NewCard';
+import Quiz from './components/Quiz';
 
 function FlashcardsStatusBar({backgroundColor, ...props}) {
   return (
@@ -51,6 +52,10 @@ const MainNavigator = StackNavigator({
     screen: NewCard,
     title: 'New card',
   },
+  Quiz: {
+    screen: Quiz,
+    title: 'Quiz',
+  }
 })
 
 export default class App extends Component {
