@@ -13,26 +13,31 @@ class NewDeck extends Component {
   }
 
   submit() {
-    if (this.state.text === '') {
+    let newDeck = this.state.text;
+
+    if (newDeck === '') {
       this.setState({error: 'Please enter a name.'});
       return;
     }
     
-    if (this.props.decks[this.state.text]) {
+    if (this.props.decks[newDeck]) {
       this.setState({error: 'Deck already exists.'});
       return;
     }
     
-    this.props.dispatch(addDeck(this.state.text));
-
-    saveDeckTitle(this.state.text);
+    this.props.dispatch(addDeck(newDeck));
     
     this.setState({
       text: '',
       error: '',
     });
-    
-    this.props.navigation.navigate('DeckList');
+
+    saveDeckTitle(newDeck).then(() => {
+      this.props.navigation.navigate(
+        'DeckDetail',
+        {deckName: newDeck}
+      );
+    });
   }
   
   render() {

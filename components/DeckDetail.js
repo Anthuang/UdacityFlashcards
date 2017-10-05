@@ -6,7 +6,7 @@ import { buttonStyles } from '../styles';
 class DeckDetail extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.state.params.deckName
+      title: navigation.state.params.deckName,
     }
   }
 
