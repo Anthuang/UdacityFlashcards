@@ -39,6 +39,15 @@ class Quiz extends Component {
       progress,
     });
   }
+
+  reset() {
+    this.setState({
+      progress: 0,
+      score: 0,
+      showAnswer: false,
+      showScore: false,
+    });
+  }
   
   render() {
     const { progress, score, showAnswer, showScore } = this.state;
@@ -52,8 +61,14 @@ class Quiz extends Component {
 
     if (showScore) {
       return (
-        <View style={{flex: 1, justifyContent: 'center'}}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Text style={{fontSize: 40, textAlign: 'center'}}>Your final score is {score}!</Text>
+          <TouchableOpacity
+            style={[Platform.OS === 'ios' ? buttonStyles.iosBtn : buttonStyles.AndroidBtn, {backgroundColor: '#fff'}]}
+            onPress={() => this.reset()}
+          >
+            <Text>Restart Quiz</Text>
+          </TouchableOpacity>
         </View>
       )
     }
