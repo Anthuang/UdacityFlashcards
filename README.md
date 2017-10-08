@@ -14,3 +14,7 @@ yarn start
 ```
 
 When the QR code shows up, you can run the app on any simulator by pressing the keys listed in the commandline. You can also run the app on your phone by scanning the QR code.
+
+
+## Platforms
+Emulators used for developing this application are the XCode iOS simulator and the Genymotion Android simulator.

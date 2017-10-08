@@ -32,7 +32,7 @@ class Quiz extends Component {
       return;
     }
 
-    
+
     this.setState({
       showAnswer: false,
       score,
@@ -48,11 +48,12 @@ class Quiz extends Component {
       showScore: false,
     });
   }
-  
+
   render() {
     const { progress, score, showAnswer, showScore } = this.state;
+    const { navigation } = this.props;
     const { questions } = this.props.deck;
-    
+
     if (questions.length === 0) {
       return (
         <Text>Please add some cards first!</Text>
@@ -69,10 +70,19 @@ class Quiz extends Component {
           >
             <Text>Restart Quiz</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={[Platform.OS === 'ios' ? buttonStyles.iosBtn : buttonStyles.AndroidBtn, {backgroundColor: '#000'}]}
+            onPress={() => navigation.navigate(
+              'DeckDetail',
+              {deckName: navigation.state.params.deckName}
+            )}
+          >
+          <Text style={{color: '#fff'}}>Back to Deck</Text>
+        </TouchableOpacity>
         </View>
       )
     }
-    
+
     return (
       <View style={{flex: 1}}>
         <View style={{flexDirection: 'row', flex: 1}}>
