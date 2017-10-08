@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-class Deck extends Component {
-  render() {
-    const { deck } = this.props;
-    
-    return (
-      <View style={styles.card}>
-        <Text style={styles.title}>{deck.title}</Text>
-        <Text style={styles.subtitle}>{deck.questions.length} cards</Text>
-      </View>
-    )
-  }
+const Deck = ({deck}) => {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.title}>{deck.title}</Text>
+      <Text style={styles.subtitle}>{deck.questions.length} cards</Text>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
